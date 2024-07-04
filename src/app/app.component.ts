@@ -1,25 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { Pizza } from './models/pizza';
 import { PizzaService } from './services/pizza.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'PizzaShop.UI';
   pizzas: Pizza[] = [];
 
   constructor(private pizzaService: PizzaService) { }
 
   ngOnInit(): void {
-    this.pizzas = this.pizzaService.getPizzas();
-    console.log(this.pizzas);
+    this.pizzaService.getPizzas().subscribe(pizzas => {
+      this.pizzas = pizzas;
+      console.log(this.pizzas);
+    });
   }
-
 }

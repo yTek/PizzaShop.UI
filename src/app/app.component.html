@@ -10,20 +10,7 @@
 </header>
 
 <main>
-  <table>
-    <thead>
-      <th> Pizza ID </th>
-      <th> Name </th>
-      <th> Price </th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pizza of pizzas">
-        <td>{{ pizza.id }}</td>
-        <td>{{ pizza.name }}</td>
-        <td>{{ pizza.price }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <app-pizza-list [pizzas]="pizzas"></app-pizza-list>
 </main>
 
 <footer>
